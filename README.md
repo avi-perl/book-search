@@ -24,6 +24,10 @@ uvicorn main:app --reload
 ```
 This will start the app on http://localhost:8000.
 
+## User Interface
+A user interface is available at `http://localhost:8000/` written in Vue by ChatGPT.
+![Screenshot of my app](img.png)
+
 ## API Documentation
 To view the API documentation, go to http://localhost:8000/docs. This will open the Swagger UI where you can view the available endpoints and test them out.
 

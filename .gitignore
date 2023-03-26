@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build files
+*.pyc
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# Cache files
+.cache/
+.cache-test/
+pytest_cache/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Dependencies
+venv/
+env/
+pip-selfcheck.json
+requirements.txt
+requirements_dev.txt
+poetry.lock
+dist/
+
+# IDE files
+.vscode/
+.idea/
+
+# Miscellaneous
+*.DS_Store
+
+test_files/

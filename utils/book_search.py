@@ -35,7 +35,7 @@ class BookSearch:
                     pages_with_text.append(key)
         else:
             for key, text_value in self.book.text.items():
-                if " ".join(corrected_words) in self._remove_punctuation(
+                if " ".join(corrected_words).lower() in self._remove_punctuation(
                     text_value.lower()
                 ):
                     pages_with_text.append(key)

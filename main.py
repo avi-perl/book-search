@@ -1,7 +1,9 @@
 from typing import List
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 from book_data import books
 from utils.book import BookTextKeyEnum
@@ -12,6 +14,7 @@ app = FastAPI(
     description="API to search for text in books",
     version="1.0",
 )
+templates = Jinja2Templates(directory="templates")
 
 
 class AvailableTitlesResult(BaseModel):
@@ -31,6 +34,12 @@ class BookSearchRequest(BaseModel):
     use_fuzzy_search: bool = False
 
 
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    available_books = await available_titles()
+    return templates.TemplateResponse("index.html", {"request": request, "books": [b.title.strip() for b in available_books]})
+
+
 @app.get(
     "/available_titles",
     response_model=List[AvailableTitlesResult],
@@ -44,7 +53,7 @@ async def available_titles():
 
 
 @app.post(
-    "/find_page", response_model=BookSearchResult, summary="Search for text in a book."
+    "/search", response_model=BookSearchResult, summary="Search for text in a book."
 )
 async def find_page(request: BookSearchRequest):
     """

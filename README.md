@@ -40,8 +40,8 @@ Response:
 ```json
 [
   {
-    "title": "string",
-    "author": "string",
+    "title": "Alice’s Adventures in Wonderland",
+    "author": "Lewis Carroll",
     "key": "chapter"
   }
 ]
@@ -59,7 +59,7 @@ curl -X 'POST' \
   -d '{
   "title": "Alice’s Adventures in Wonderland",
   "text": "very tired",
-  "use_fuzz": true
+  "use_fuzz": false
 }'
 ```
 Response:
